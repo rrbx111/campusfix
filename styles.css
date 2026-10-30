@@ -9,4 +9,27 @@ body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink);fo
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 .finder fieldset.field{border:0;padding:0;min-width:0}.finder fieldset legend{padding:0;margin-bottom:8px}.finder fieldset .seatoptions{width:100%}
 body{overflow-x:clip}
-.demobar,.homehero .herocopy .eyebrow.light,.datasetnote,footer>span{display:none}
+.demobar,.homehero .herocopy .eyebrow.light,.datasetnote,footer>span,.herofoot .subtle{display:none}
+.brand{font-size:28px;min-width:155px}
+.brandmark{font-size:46px}
+.brandmark span{font-size:22px;right:-10px;top:-9px}
+.brand small{font-size:9px}
+@media(max-width:700px){.brand{font-size:24px;min-width:0}.brandmark{font-size:40px}.brandmark span{font-size:20px;right:-9px;top:-8px}}
+.brand{font-size:0;min-width:180px;height:58px;gap:0}
+.brand::before{content:"";display:block;width:180px;height:54px;background:url("cfix-logo-box.svg?v=logo-v4") center/contain no-repeat}
+.brand>*{display:none}
+@media(max-width:700px){.brand{min-width:150px;height:50px}.brand::before{width:150px;height:48px}}
+.brand{min-width:220px}
+.brand::before{width:220px;height:58px;background-position:left center}
+@media(max-width:700px){.brand{min-width:175px}.brand::before{width:175px;height:50px}}
+.brand{min-width:300px;height:70px}
+.brand::before{width:300px;height:68px}
+@media(max-width:700px){.brand{min-width:220px;height:55px}.brand::before{width:220px;height:53px}}
+@media (min-width:701px) and (max-width:1100px){.brand{min-width:220px;height:60px}.brand::before{width:220px;height:58px}}
+.roomcard{border-top:3px solid #d9cfc4}
+.roomcard[data-status=AVAILABLE]{border-top-color:#9fa95e}
+.roomcard[data-status=OCCUPIED],.roomcard[data-status=INCLASS]{border-top-color:#d79a4f}
+.roomcard[data-status=UNDERMAINTENANCE],.roomcard[data-status=UNAVAILABLE]{border-top-color:#bd6c5e}
+.roomnext{margin:14px 0 0;padding:9px 10px;background:#f8eee3;border-radius:10px;min-height:40px;line-height:1.45}
+.roomnext strong{color:var(--ink)}
+.roomcontent button[disabled]{opacity:1;background:#eee2d5;color:#9b8575;border-color:#e2d4c5}

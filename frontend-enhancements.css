@@ -1,0 +1,134 @@
+.roomfilters {
+  display: grid;
+  grid-template-columns: minmax(220px, 2fr) repeat(3, minmax(120px, 1fr));
+  align-items: center;
+}
+
+.roomfilters [data-filter="search"] {
+  grid-column: 1 / -1;
+}
+
+.filter-summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #806558;
+  font-size: 11px;
+  margin: -20px 0 10px 4px;
+}
+
+.filter-summary strong {
+  color: var(--ink);
+  font-size: 13px;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0 0 18px;
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f4e5d7;
+  border: 1px solid #e3cfc0;
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 10px;
+  padding: 6px 8px 6px 10px;
+}
+
+.filter-chip button {
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  min-height: 18px;
+  padding: 0 2px;
+}
+
+.filter-chip button:hover {
+  color: var(--orange);
+}
+
+.room-detail-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin: 18px 0 20px;
+}
+
+.room-detail-stats > div {
+  background: #f4e7da;
+  border: 1px solid #e5d3c4;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.room-detail-stats span {
+  display: block;
+  color: #947668;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.room-detail-stats strong {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+@media (max-width: 700px) {
+  .roomfilters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .roomfilters [data-filter="search"] {
+    grid-column: 1 / -1;
+  }
+
+  .roomfilters [data-filter="capacity"],
+  .roomfilters [data-filter="equipment"] {
+    min-width: 0;
+  }
+
+  .roomfilters > button {
+    grid-column: 1 / -1;
+  }
+
+  .filter-summary {
+    margin-top: -12px;
+  }
+
+  dialog {
+    width: calc(100vw - 28px);
+    max-width: none;
+    max-height: calc(100vh - 28px);
+    overflow: auto;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .dialoghead {
+    position: sticky;
+    top: -20px;
+    z-index: 2;
+    background: var(--bg);
+    padding-bottom: 12px;
+  }
+
+  .room-detail-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .room-detail-stats > div:first-child {
+    grid-column: 1 / -1;
+  }
+}
+

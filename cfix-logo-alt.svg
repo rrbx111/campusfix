@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="190" viewBox="0 0 760 190" role="img" aria-labelledby="title desc">
+  <title id="title">CFix alternate logo</title>
+  <desc id="desc">A distinctive CFix badge with a cream C, orange lightning mark, and two-tone wordmark.</desc>
+  <rect x="18" y="18" width="154" height="154" rx="46" fill="#590e16"/>
+  <path d="M120 58c-12-14-29-22-48-22-32 0-58 26-58 58s26 58 58 58c21 0 40-11 50-28" fill="none" stroke="#fff8eb" stroke-width="17" stroke-linecap="round"/>
+  <path d="m116 47 15 15M131 47l-15 15" fill="none" stroke="#e98b3a" stroke-width="7" stroke-linecap="round"/>
+  <path d="M99 82h30l-18 24h17l-30 38 9-26H90z" fill="#e98b3a"/>
+  <text x="210" y="113" fill="#590e16" font-family="Inter, Arial, sans-serif" font-size="91" font-weight="900" letter-spacing="-5">C</text>
+  <text x="274" y="113" fill="#e98b3a" font-family="Inter, Arial, sans-serif" font-size="91" font-weight="900" letter-spacing="-5">Fix</text>
+  <path d="M280 139h46" stroke="#590e16" stroke-width="5" stroke-linecap="round"/>
+  <text x="340" y="144" fill="#8a625b" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="4.5">NSTP BUILDING</text>
+</svg>
