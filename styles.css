@@ -9,3 +9,4 @@ body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink);fo
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 .finder fieldset.field{border:0;padding:0;min-width:0}.finder fieldset legend{padding:0;margin-bottom:8px}.finder fieldset .seatoptions{width:100%}
 body{overflow-x:clip}
+.demobar,.homehero .herocopy .eyebrow.light,.datasetnote,footer>span{display:none}
