@@ -1,0 +1,21 @@
+const assert=require('node:assert/strict');const E=require('./engine.js');
+const now=new Date('2026-10-30T02:00:00Z'),r={id:'R',override:''};const d={schedules:[],sessions:[]};
+assert.equal(E.status(d,r,now),'AVAILABLE');
+assert.equal(E.status(d,{...r,override:'UNDER MAINTENANCE'},now),'UNDER MAINTENANCE');
+assert.equal(E.status(d,{...r,override:'UNAVAILABLE'},now),'UNAVAILABLE');
+d.sessions.push({room:'R',start:'2026-10-30T01:50:00Z',end:'2026-10-30T02:30:00Z',closed:false});assert.equal(E.status(d,r,now),'OCCUPIED');
+d.schedules.push({room:'R',start:'2026-10-30T02:00:00Z',end:'2026-10-30T03:00:00Z'});assert.equal(E.status(d,r,now),'IN CLASS');
+assert.equal(E.overlap('2026-10-30T01:00Z','2026-10-30T02:00Z','2026-10-30T02:00Z','2026-10-30T03:00Z'),false);
+assert.equal(E.blockers(d,'R','2026-10-30T02:10Z','2026-10-30T02:20Z').length,2);
+const future={schedules:[{room:'R',start:'2026-10-30T02:20:00Z',end:'2026-10-30T03:00:00Z'}],sessions:[]};assert.equal(E.sessionEnd(future,'R',60,now),'2026-10-30T02:20:00.000Z');
+future.reservations=[{room:'R',start:'2026-10-30T02:10:00Z',end:'2026-10-30T02:15:00Z',status:'Approved'}];assert.equal(E.sessionEnd(future,'R',60,now),'2026-10-30T02:20:00.000Z');
+assert.equal(E.status({schedules:[],sessions:[],reservations:[{room:'R',start:'2026-10-30T01:00Z',end:'2026-10-30T03:00Z',status:'Approved'}]},r,now),'AVAILABLE');
+console.log('10 room-rule assertions passed, including ignored legacy bookings.');
+const vm=require('node:vm'),fs=require('node:fs'),elements={};
+const el=()=>({textContent:'',innerHTML:'',style:{},value:'',open:false,addEventListener(){},close(){},showModal(){}});
+const document={querySelector(s){return elements[s]??=el()},addEventListener(){},body:{classList:{toggle(){},remove(){}}}};
+const ctx={CampusEngine:E,document,localStorage:{getItem(){return null},setItem(){}},window:{addEventListener(){}},location:{hash:'',href:'http://localhost/'},setTimeout(){},clearTimeout(){},setInterval(){},crypto:require('node:crypto').webcrypto,URL,Date,console};
+vm.createContext(ctx);vm.runInContext(fs.readFileSync(__dirname+'/app.js','utf8'),ctx);
+for(const fn of ['dashboard','rooms','schedules','reports','activity','notifications','announcements','adminPage','analytics','logs']){const html=vm.runInContext(fn+'()',ctx);assert.ok(html.length>100,fn);assert.doesNotMatch(html,/reserv|data-reserve/i,fn)}
+vm.runInContext("detail('NSTP-101')",ctx);assert.doesNotMatch(elements['#modalBody'].innerHTML,/reserv|data-reserve/i);
+console.log('All 10 page render checks and room-detail check passed without reservation UI.');
