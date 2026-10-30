@@ -13,7 +13,7 @@ assert.equal(E.status({schedules:[],sessions:[],reservations:[{room:'R',start:'2
 console.log('10 room-rule assertions passed, including ignored legacy bookings.');
 const vm=require('node:vm'),fs=require('node:fs'),elements={};
 const el=()=>({textContent:'',innerHTML:'',style:{},value:'',open:false,addEventListener(){},close(){},showModal(){}});
-const document={querySelector(s){return elements[s]??=el()},addEventListener(){},body:{classList:{toggle(){},remove(){}}}};
+const document={querySelector(s){return elements[s]??=el()},addEventListener(){},body:{dataset:{},classList:{toggle(){},remove(){}}}};
 const ctx={CampusEngine:E,document,localStorage:{getItem(){return null},setItem(){}},window:{addEventListener(){}},location:{hash:'',href:'http://localhost/'},setTimeout(){},clearTimeout(){},setInterval(){},crypto:require('node:crypto').webcrypto,URL,Date,console};
 vm.createContext(ctx);vm.runInContext(fs.readFileSync(__dirname+'/app.js','utf8'),ctx);
 for(const fn of ['dashboard','rooms','schedules','reports','activity','notifications','announcements','adminPage','analytics','logs']){const html=vm.runInContext(fn+'()',ctx);assert.ok(html.length>100,fn);assert.doesNotMatch(html,/reserv|data-reserve/i,fn)}
